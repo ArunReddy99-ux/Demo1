@@ -1,0 +1,17 @@
+name: "Default variables "
+
+on: workflow_dispatch
+
+jobs:
+  ubuntu-environment-variables:
+    runs-on: ubuntu-latest
+    steps:
+      - run: env
+  windows-environment-variables:
+    runs-on: window-latest
+    steps:
+      - run: env
+  macos-environment-variables:
+    runs-on: macos-latest
+    steps:
+      - run: env
