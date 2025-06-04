@@ -1,0 +1,24 @@
+name: "Default variables 2 "
+
+on:
+  push:
+
+jobs:
+  mainjob:
+    name: "Print the Default GitHub vars"
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: print-value-of-env-vars
+        run: |
+          echo "$GITHUB_ACTION"
+          echo "$GITHUB_ENV"
+          echo "$GITHUB_API_URL"
+          echo "$GITHUB_JOB"
+          echo "$GITHUB_PATH"
+          echo "$GITHUB_STEP_SUMMARY"
+          echo "$GITHUB_WORKFLOW"
+          echo "$GITHUB_REPOSITORY_OWNER"
+          echo "$GITHUB_RUN_NUMBER"
+          echo "$GITHUB_SERVER_URL"
+          echo "$GITHUB_NAME"
