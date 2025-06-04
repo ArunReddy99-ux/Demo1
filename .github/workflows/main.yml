@@ -3,8 +3,11 @@ name: A Basic workflow
 on:
   push:
     branches: ["main"]
+
   pull_request:
     branches: ["main"]
+
+  workflow_dispatch:
 
 jobs:
   build-app:
@@ -22,7 +25,7 @@ jobs:
           echo test, and deploy your project.
 
   build-api:
-    runs-on: windows-lates
+    runs-on: windows-latest
     steps:
       - run: echo "Building API"
 
@@ -34,6 +37,6 @@ jobs:
 
   package:
     needs: [build-app, build-db]
-    runs-on: macos-lates
+    runs-on: macos-latest
     steps:
       - run: echo "Hello Macos"
