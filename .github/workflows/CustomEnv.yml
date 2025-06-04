@@ -4,8 +4,8 @@ on:
   workflow_dispatch:
 
 env:
-DAY_OF_WEEK: Funday
-testvar: value-1
+  DAY_OF_WEEK: Friday
+  testvar: value-1
 
 jobs:
   mainjob:
@@ -23,5 +23,5 @@ jobs:
           echo "testvar ${{ env.testvar }}"
 
         env:
-        First_Name: Student
-        testvar: value-3
+          First_Name: Student
+          testvar: value-3
