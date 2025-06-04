@@ -18,7 +18,7 @@ jobs:
 
     steps:
       - name: print-value-of-env-vars
-        run: echo "$Greeting $First_Name.Today is $DAY_OF_WEEK!"
+        run: echo "$Greeting $First_Name.Today is $DAY_OF_WEEK"
           echo "testvar $testvar"
           echo "testvar ${{ env.testvar }}"
 
