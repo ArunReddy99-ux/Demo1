@@ -10,7 +10,7 @@ jobs:
       - name: "Create a local file"
         run: echo "Hi ,I am storing data in the file,so that I can use this in the subsequent jobs within this workflow run.I will upload this file to GitHub Storage and download from thre when needed in this workflow run." > file.txt
 
-      - uses: actions/upload-artifact@v2
+      - uses: actions/upload-artifact@v4
         with:
           name: file
           path: file.txt
@@ -21,7 +21,7 @@ jobs:
     runs-on: ubuntu-latest
     needs: job_1
     steps:
-      - uses: actions/download-artifact@v2
+      - uses: actions/download-artifact@v4
         with:
           name: file
       - run: cat file.txt
