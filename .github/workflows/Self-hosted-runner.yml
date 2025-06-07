@@ -1,0 +1,12 @@
+name: "self hosted runner demo"
+
+on: workflow_dispatch
+
+jobs:
+  hello-self-hosted-runners:
+    runs-on: [self-hosted, windows, x64, gpu]
+    steps:
+      - name: run-me-inside-hosted-runner
+        run: echo "Howdy GitHub Actions.I know I am getting executed inside self hosted runner."
+      - name: sleep for 100 seconds
+        run: sleep 100
