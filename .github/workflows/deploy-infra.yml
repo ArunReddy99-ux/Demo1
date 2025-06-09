@@ -1,0 +1,36 @@
+name: Deploy Infra
+
+on: workflow_dispatch
+
+env:
+  resourceGroupName: lab
+  storageNamePrefix: labtest
+
+jobs:
+  infra-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4.2.2
+
+      # Login into Azure
+      - name: Azure Login
+        uses: Azure/login@v2.3.0
+        with:
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
+          # Ensure that AZURE_CREDENTIALS is set in your repository or organization secrets:
+          # GitHub > Your Repo > Settings > Secrets and variables > Actions > New repository secret
+          # Name: AZURE_CREDENTIALS, Value: <your Azure credentials JSON>
+
+      # Deploy Bicep template
+      - name: Deploy Azure Resource Manager (ARM) Template
+        uses: Azure/arm-deploy@v2
+        with:
+          scope: resourceGroup
+          # Ensure that AZURE_SUBSCRIPTION is set in your repository or organization secrets:
+          # GitHub > Your Repo > Settings > Secrets and variables > Actions > New repository secret
+          # Name: AZURE_SUBSCRIPTION, Value: <your Azure Subscription ID>
+          subscriptionId: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+          resourceGroupName: lab
+          template: ./infra/templates/deploy_envt.bicep
+          parameters: storageNamePrefix=${{ env.storageNamePrefix }}
