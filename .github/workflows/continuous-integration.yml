@@ -2,12 +2,16 @@ name: Continuous Integration Demo
 
 on:
   push: branches:["main"]
+
   workflow_dispatch:
+
 env: DOTNET_VERSION:'9.0.300'
+
 defaults:
   run:
     shell: bash
     working-directory: ./WebApplication01
+
 jobs:
   build:
     runs-on: ubuntu-latest
